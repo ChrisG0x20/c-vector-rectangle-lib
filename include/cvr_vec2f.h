@@ -26,7 +26,7 @@ typedef union vec2f_s
 } vec2f;
 
 // Returns a vector with all elements set to zero.
-vec2f vec2f_zero();
+vec2f vec2f_zero(void);
 
 // Copy the elements of the source array to the elements of the destination vector and zero any remaining elements.
 void vec2f_copy_array(vec2f *const dst, const float *const src, const size_t count);

@@ -18,7 +18,7 @@
 #endif
 
 // Returns a rectangle with all elements set to 0.
-rect_t RECT_FUNC(zero)()
+rect_t RECT_FUNC(zero)(void)
 {
     rect_t result;
     size_t i = 0u;

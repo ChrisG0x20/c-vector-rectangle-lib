@@ -15,3 +15,11 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio
+*.opensdf
+*.sdf
+*.suo
+*.user
+Debug/
+Release/

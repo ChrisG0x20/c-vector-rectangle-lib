@@ -23,7 +23,7 @@ typedef union raster_rectui_s
 } raster_rectui;
 
 // Returns a rectangle with all elements set to 0.
-raster_rectui raster_rectui_zero();
+raster_rectui raster_rectui_zero(void);
 
 // Returns a rectangle initialized to location (0, 0) with the specified width and height.
 raster_rectui raster_rectui_init_to_size(const uint_fast32_t width, const uint_fast32_t height);

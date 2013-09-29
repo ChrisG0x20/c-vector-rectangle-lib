@@ -8,17 +8,17 @@
 // WARNING: Do not include this file directly from your code.
 //
 // This file is included by cvr_vec.c to generate vector operations based on different scalar types
-// and vector magnitudes. The template code here depends on several macros being defined before this
+// and vector dimension. The template code here depends on several macros being defined before this
 // code may be expanded correctly.
 //
 
 // Returns vector with all elements set to zero.
-vector_t VEC_FUNC(zero)()
+vector_t VEC_FUNC(zero)(void)
 {
     size_t i = 0u;
     vector_t zero_vector;
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         zero_vector.elem[i] = (scalar_t)0.0;
     }
@@ -33,14 +33,14 @@ void VEC_FUNC(copy_array)(vector_t *const dst, const scalar_t *const src, const 
 
     assert(NULL != dst);
     assert(NULL != src);
-    assert(count <= MAGNITUDE);
+    assert(count <= DIMENSION);
 
-    for (; i < count && i < MAGNITUDE; ++i)
+    for (; i < count && i < DIMENSION; ++i)
     {
         dst->elem[i] = src[i];
     }
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         dst->elem[i] = (scalar_t)0.0;
     }
@@ -53,7 +53,7 @@ void VEC_FUNC(fill)(vector_t *const dst, const scalar_t src)
 
     assert(NULL != dst);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         dst->elem[i] = src;
     }
@@ -67,7 +67,7 @@ void VEC_FUNC(swap)(vector_t *const lhs, vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         const scalar_t temp = lhs->elem[i];
         lhs->elem[i] = rhs->elem[i];
@@ -77,7 +77,7 @@ void VEC_FUNC(swap)(vector_t *const lhs, vector_t *const rhs)
 
 // The swizzle function implementation depends heavily on x-macro tricks; er, technique.
 #define ADD_ELEM_TO_ARGS(i) , const unsigned int e##i
-#define ASSERT_RANGE(i) assert(e##i < MAGNITUDE);
+#define ASSERT_RANGE(i) assert(e##i < DIMENSION);
 #define DO_SWIZZLE(i) result.elem[i] = v->elem[e##i];
 
 // Returns a vector with elements swizzled from the original.
@@ -86,7 +86,7 @@ vector_t VEC_FUNC(swizzle)(const vector_t *const v, const unsigned int e0 FOR_EA
     vector_t result = VEC_FUNC(zero)();
 
     assert(NULL != v);
-    assert(e0 < MAGNITUDE);
+    assert(e0 < DIMENSION);
     FOR_EACH_ADDITIONAL_ELEM(ASSERT_RANGE);
 
     result.elem[0] = v->elem[e0];
@@ -108,7 +108,7 @@ vector_t VEC_FUNC(add)(const vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = lhs->elem[i] + rhs->elem[i];
     }
@@ -124,7 +124,7 @@ void VEC_FUNC(add_assign)(vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         lhs->elem[i] += rhs->elem[i];
     }
@@ -138,7 +138,7 @@ vector_t VEC_FUNC(add_scalar)(const vector_t *const v, const scalar_t scalar)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = v->elem[i] + scalar;
     }
@@ -153,7 +153,7 @@ void VEC_FUNC(add_assign_scalar)(vector_t *const v, const scalar_t scalar)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         v->elem[i] += scalar;
     }
@@ -168,7 +168,7 @@ vector_t VEC_FUNC(subtract)(const vector_t *const lhs, const vector_t *const rhs
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = lhs->elem[i] - rhs->elem[i];
     }
@@ -184,7 +184,7 @@ void VEC_FUNC(subtract_assign)(vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         lhs->elem[i] -= rhs->elem[i];
     }
@@ -198,7 +198,7 @@ vector_t VEC_FUNC(subtract_scalar)(const vector_t *const v, const scalar_t scala
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = v->elem[i] - scalar;
     }
@@ -213,7 +213,7 @@ void VEC_FUNC(subtract_assign_scalar)(vector_t *const v, const scalar_t scalar)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         v->elem[i] -= scalar;
     }
@@ -228,7 +228,7 @@ vector_t VEC_FUNC(multiply)(const vector_t *const lhs, const vector_t *const rhs
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = lhs->elem[i] * rhs->elem[i];
     }
@@ -244,7 +244,7 @@ void VEC_FUNC(multiply_assign)(vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         lhs->elem[i] *= rhs->elem[i];
     }
@@ -258,7 +258,7 @@ vector_t VEC_FUNC(multiply_scalar)(const vector_t *const v, const scalar_t scala
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = v->elem[i] * scalar;
     }
@@ -273,7 +273,7 @@ void VEC_FUNC(multiply_assign_scalar)(vector_t *const v, const scalar_t scalar)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         v->elem[i] *= scalar;
     }
@@ -288,7 +288,7 @@ vector_t VEC_FUNC(divide)(const vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = lhs->elem[i] / rhs->elem[i];
     }
@@ -304,7 +304,7 @@ void VEC_FUNC(divide_assign)(vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         lhs->elem[i] /= rhs->elem[i];
     }
@@ -318,7 +318,7 @@ vector_t VEC_FUNC(divide_scalar)(const vector_t *const v, const scalar_t scalar)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = v->elem[i] / scalar;
     }
@@ -333,7 +333,7 @@ void VEC_FUNC(divide_assign_scalar)(vector_t *const v, const scalar_t scalar)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         v->elem[i] /= scalar;
     }
@@ -380,7 +380,7 @@ bool VEC_FUNC(eq)(const vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         if (lhs->elem[i] != rhs->elem[i])
         {
@@ -408,7 +408,7 @@ bool VEC_FUNC(lt)(const vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE - 1; ++i)
+    for (; i < DIMENSION - 1; ++i)
     {
         if (lhs->elem[i] < rhs->elem[i])
         {
@@ -421,7 +421,7 @@ bool VEC_FUNC(lt)(const vector_t *const lhs, const vector_t *const rhs)
         }
     }
 
-    return lhs->elem[MAGNITUDE - 1] < rhs->elem[MAGNITUDE - 1];
+    return lhs->elem[DIMENSION - 1] < rhs->elem[DIMENSION - 1];
 }
 
 // Returns true if the lhs is less-than-or-equal-to (<=) the rhs. NOTE: This does not compare magnitudes, but is valid for sorting.
@@ -432,7 +432,7 @@ bool VEC_FUNC(le)(const vector_t *const lhs, const vector_t *const rhs)
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE - 1; ++i)
+    for (; i < DIMENSION - 1; ++i)
     {
         if (lhs->elem[i] < rhs->elem[i])
         {
@@ -445,7 +445,7 @@ bool VEC_FUNC(le)(const vector_t *const lhs, const vector_t *const rhs)
         }
     }
 
-    return lhs->elem[MAGNITUDE - 1] <= rhs->elem[MAGNITUDE - 1];
+    return lhs->elem[DIMENSION - 1] <= rhs->elem[DIMENSION - 1];
 }
 
 // Returns true if the lhs is greater-than (>) the rhs. NOTE: This does not compare magnitudes, but is valid for sorting.
@@ -475,7 +475,7 @@ scalar_t VEC_FUNC(dot_product)(const vector_t *const lhs, const vector_t *const 
     assert(NULL != lhs);
     assert(NULL != rhs);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         dotProduct += lhs->elem[i] * rhs->elem[i];
     }
@@ -491,7 +491,7 @@ scalar_t VEC_FUNC(length_squared)(const vector_t *const v)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         length2 += v->elem[i] * v->elem[i];
     }
@@ -550,7 +550,7 @@ scalar_t VEC_FUNC(normalize)(vector_t *const v)
 /////////////////////////////////////////////////
 // Functions valid only for 2D vector formats. //
 /////////////////////////////////////////////////
-#if MAGNITUDE == 2u
+#if DIMENSION == 2u
 
 // Calculates a counter-clockwise rotation of the vector about the Z-axis.
 // x' = x cos(Theta) - y sin(Theta)
@@ -586,12 +586,12 @@ vector_t VEC_FUNC(rotate_clockwise)(const vector_t *const v, const scalar_t radi
     return result;
 }
 
-#endif // MAGNITUDE == 2u
+#endif // DIMENSION == 2u
 
 /////////////////////////////////////////////////
 // Functions valid only for 3D vector formats. //
 /////////////////////////////////////////////////
-#if MAGNITUDE == 3u
+#if DIMENSION == 3u
 
 // Returns the vector cross product of lhs and rhs.
 vector_t VEC_FUNC(cross_product)(const vector_t *const lhs, const vector_t *const rhs)
@@ -617,7 +617,7 @@ vector_t VEC_FUNC(calc_surface_normal)(const vector_t *const v0, const vector_t 
     return VEC_FUNC(unit)(&xproduct);
 }
 
-#endif // MAGNITUDE == 3u
+#endif // DIMENSION == 3u
 
 #endif // !defined SCALAR_INTEGER && !defined SCALAR_UNSIGNED
 
@@ -634,7 +634,7 @@ vector_t VEC_FUNC(negate)(const vector_t *const v)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = -v->elem[i];
     }
@@ -650,7 +650,7 @@ vector_t VEC_FUNC(abs)(const vector_t *const v)
 
     assert(NULL != v);
 
-    for (; i < MAGNITUDE; ++i)
+    for (; i < DIMENSION; ++i)
     {
         result.elem[i] = VEC_ABS(v->elem[i]);
     }

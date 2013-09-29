@@ -24,7 +24,7 @@
 // 2-Dimensional Vectors //
 ///////////////////////////
 
-#define MAGNITUDE       2u
+#define DIMENSION       2u
 
 #define FOR_EACH_ADDITIONAL_ELEM(apply) \
     apply(1)
@@ -120,14 +120,14 @@
 #undef vector_t
 #undef VEC_FMT_SPEC
 #undef VEC_WFMT_SPEC
-#undef MAGNITUDE
+#undef DIMENSION
 #undef FOR_EACH_ADDITIONAL_ELEM
 
 ///////////////////////////
 // 3-Dimensional Vectors //
 ///////////////////////////
 
-#define MAGNITUDE       3u
+#define DIMENSION       3u
 
 #define FOR_EACH_ADDITIONAL_ELEM(apply) \
     apply(1)\
@@ -169,14 +169,14 @@
 #undef VEC_ABS
 #undef scalar_t
 #undef vector_t
-#undef MAGNITUDE
+#undef DIMENSION
 #undef FOR_EACH_ADDITIONAL_ELEM
 
 ///////////////////////////
 // 4-Dimensional Vectors //
 ///////////////////////////
 
-#define MAGNITUDE       4u
+#define DIMENSION       4u
 
 #define FOR_EACH_ADDITIONAL_ELEM(apply) \
     apply(1)\
@@ -216,5 +216,5 @@
 #undef VEC_ABS
 #undef scalar_t
 #undef vector_t
-#undef MAGNITUDE
+#undef DIMENSION
 #undef FOR_EACH_ADDITIONAL_ELEM

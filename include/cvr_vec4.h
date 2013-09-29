@@ -32,7 +32,7 @@ typedef union vec4_s
 } vec4;
 
 // Returns a vector with all elements set to zero.
-vec4 vec4_zero();
+vec4 vec4_zero(void);
 
 // Copy the elements of the source array to the elements of the destination vector and zero any remaining elements.
 void vec4_copy_array(vec4 *const dst, const double *const src, const size_t count);

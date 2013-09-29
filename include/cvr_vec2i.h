@@ -21,7 +21,7 @@ typedef union vec2i_s
 } vec2i;
 
 // Returns a vector with all elements set to zero.
-vec2i vec2i_zero();
+vec2i vec2i_zero(void);
 
 // Copy the elements of the source array to the elements of the destination vector and zero any remaining elements.
 void vec2i_copy_array(vec2i *const dst, const int_fast32_t *const src, const size_t count);

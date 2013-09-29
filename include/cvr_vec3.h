@@ -35,7 +35,7 @@ typedef union vec3_s
 } vec3;
 
 // Returns a vector with all elements set to zero.
-vec3 vec3_zero();
+vec3 vec3_zero(void);
 
 // Copy the elements of the source array to the elements of the destination vector and zero any remaining elements.
 void vec3_copy_array(vec3 *const dst, const double *const src, const size_t count);

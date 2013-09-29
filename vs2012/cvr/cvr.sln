@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cvr", "cvr.vcxproj", "{C6CF0313-7FEE-4039-9CD5-8BB80E4DF640}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cvr_test", "cvr_test\cvr_test.vcxproj", "{11B1AE7C-BFC6-4C54-BE14-0B43EEFF1E14}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C6CF0313-7FEE-4039-9CD5-8BB80E4DF640} = {C6CF0313-7FEE-4039-9CD5-8BB80E4DF640}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6CF0313-7FEE-4039-9CD5-8BB80E4DF640}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C6CF0313-7FEE-4039-9CD5-8BB80E4DF640}.Debug|Win32.Build.0 = Debug|Win32
+		{C6CF0313-7FEE-4039-9CD5-8BB80E4DF640}.Release|Win32.ActiveCfg = Release|Win32
+		{C6CF0313-7FEE-4039-9CD5-8BB80E4DF640}.Release|Win32.Build.0 = Release|Win32
+		{11B1AE7C-BFC6-4C54-BE14-0B43EEFF1E14}.Debug|Win32.ActiveCfg = Debug|Win32
+		{11B1AE7C-BFC6-4C54-BE14-0B43EEFF1E14}.Debug|Win32.Build.0 = Debug|Win32
+		{11B1AE7C-BFC6-4C54-BE14-0B43EEFF1E14}.Release|Win32.ActiveCfg = Release|Win32
+		{11B1AE7C-BFC6-4C54-BE14-0B43EEFF1E14}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

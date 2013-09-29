@@ -23,7 +23,7 @@ typedef union rectf_s
 } rectf;
 
 // Returns a rectangle with all elements set to 0.
-rectf rectf_zero();
+rectf rectf_zero(void);
 
 // Returns a rectangle initialized to location (0, 0) with the specified width and height.
 rectf rectf_init_to_size(const float width, const float height);

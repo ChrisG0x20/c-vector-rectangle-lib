@@ -7,7 +7,9 @@
 
 #include <assert.h>
 #include <stdint.h>
+#ifndef _WIN32
 #include <wchar.h>
+#endif
 #include "cvr_vector.h"
 #include "cvr_vec_conv.h"
 

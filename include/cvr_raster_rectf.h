@@ -23,7 +23,7 @@ typedef union raster_raster_rectf_s
 } raster_rectf;
 
 // Returns a rectangle with all elements set to 0.
-raster_rectf raster_rectf_zero();
+raster_rectf raster_rectf_zero(void);
 
 // Returns a rectangle initialized to location (0, 0) with the specified width and height.
 raster_rectf raster_rectf_init_to_size(const float width, const float height);
