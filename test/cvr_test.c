@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdint.h>
+#ifndef _WIN32
+#include <wchar.h>
+#endif
 #include <cvr_vector.h>
 #include <cvr_rectangle.h>
 
@@ -16,15 +19,13 @@ int main(int argc, char *argv[])
     vec2f v1 = vec2f_zero();
     rectf r1 = rectf_zero();
 
-    (argc), (argv); // unreferenced parameters
+    (void)(argc), (void)(argv); // unreferenced parameters
 
     vec2f_snprintf(buffer, BUFFER_LENGTH, &v1);
-    printf(buffer);
-    printf("\n");
+    printf("%s\n", buffer);
 
     rectf_snprintf(buffer, BUFFER_LENGTH, &r1);
-    printf(buffer);
-    printf("\n");
+    printf("%s\n", buffer);
 
     // pause for keypress
     printf("press any key to exit...");
