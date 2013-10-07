@@ -112,7 +112,7 @@ bool vec_le(const vector_t *const lhs, const vector_t *const rhs);
 bool vec_gt(const vector_t *const lhs, const vector_t *const rhs);
 bool vec_ge(const vector_t *const lhs, const vector_t *const rhs);
 ```
-- Basic vector comparison functions. These can be used for sorting vectors or for storing vectors in ordered data structures. These functions to *NOT* compare the magnitudes of the vectors. The functions represent:
+- Basic vector comparison functions. These can be used for sorting vectors or for storing vectors in ordered data structures. These functions to *NOT* compare the magnitudes of the vectors. The functions represent these comparison operations:
 
 ```
 v1 == v2 // eq
@@ -165,7 +165,7 @@ Functions Valid Only for 2D Floating Point Vector Formats
 // y' = x sin(Theta) + y cos(Theta)
 vector_t vec_rotate_counter_clockwise(const vector_t *const v, const scalar_t radians);
 ```
-- Useful for rotating 2D verticies.
+- Useful for rotating 2D vertices.
 
 ```C
 // Calculates a clockwise rotation of the vector about the Z-axis.
@@ -173,7 +173,7 @@ vector_t vec_rotate_counter_clockwise(const vector_t *const v, const scalar_t ra
 // y' = x -sin(Theta) + y cos(Theta)
 vector_t vec_rotate_clockwise(const vector_t *const v, const scalar_t radians);
 ```
-- Useful for rotating 2D verticies.
+- Useful for rotating 2D vertices.
 
 Functions Valid Only for 3D Floating Point Vector Formats
 ---------------------------------------------------------
